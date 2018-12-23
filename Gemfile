@@ -1,4 +1,4 @@
-source "http://rubygems.snc1"
+source "http://rubygems.org"
 
 gem "awesome_print"
 gem "httparty"
