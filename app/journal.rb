@@ -15,9 +15,10 @@ class Journal
     @date.to_s + ".yml"
   end
 
-  def add_entry(entry)
+  def add_entry(text)
+    @entry = text
     file = File.new(@file_path, "a")
-    file.puts(entry)
+    file.puts(@entry)
     file.close
   end
 
@@ -26,6 +27,10 @@ class Journal
   end
 
   def entries
-    File.read(@file_path).split("\n")
+    JSON.parse(File.read(@file_path))
+  end
+
+  def format_entry(text)
+    {time: Time.now, description: text}
   end
 end

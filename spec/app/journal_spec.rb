@@ -15,7 +15,8 @@ describe Journal do
   end
 
   after(:each) do
-    File.delete(test_journal.file_path)
+    file = test_journal.file_path
+    File.delete(file) if File.exists?(file)
   end
 
   describe "#initialize" do
@@ -41,9 +42,22 @@ describe Journal do
       test_entry = "this is only a test"
 
       journal.add_entry(test_entry)
-      contents = File.read(journal.file_path).split("\n")
 
-      contents.last.should include(test_entry)
+      journal.last_entry.should include(test_entry)
+    end
+
+    it "adds a timestamp to the start to each entry" do
+    end
+  end
+
+  describe "#format_entry" do
+    it "add a timestamp to the front of each entry" do
+      journal = test_journal
+      test_entry = "we are testing here"
+
+      journal.add_entry(test_entry)
+
+      binding.pry
     end
   end
 
