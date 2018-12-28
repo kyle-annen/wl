@@ -1,5 +1,5 @@
+# frozen_string_literal: true
 
 class Example
-  def initialize()
-  end
+  def initialize; end
 end

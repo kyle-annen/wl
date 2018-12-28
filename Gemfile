@@ -1,19 +1,21 @@
-source "http://rubygems.org"
+# frozen_string_literal: true
 
-gem "awesome_print"
-gem "httparty"
-gem "logger"
+source 'http://rubygems.org'
+
+gem 'awesome_print'
+gem 'httparty'
+gem 'logger'
 
 group :development do
-  gem "byebug"
-  gem "guard", :require => false
-  gem "guard-rspec", :require => false
-  gem "pry-byebug"
-  gem "rubocop", :require => false
+  gem 'byebug'
+  gem 'guard', require: false
+  gem 'guard-rspec', require: false
+  gem 'pry-byebug'
+  gem 'rubocop', require: false
 end
 
 group :test do
-  gem "faker"
-  gem "rspec"
-  gem "rspec-instafail"
+  gem 'faker'
+  gem 'rspec'
+  gem 'rspec-instafail'
 end

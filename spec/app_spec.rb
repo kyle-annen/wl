@@ -1,10 +1,11 @@
-require_relative "./spec_helper.rb"
-require_relative "../app.rb"
+# frozen_string_literal: true
+
+require_relative './spec_helper.rb'
+require_relative '../app.rb'
 
 describe App do
-  it "exists" do
+  it 'exists' do
     app = App
-    app.should_not == nil
+    app.should_not.nil?
   end
 end
-
