@@ -32,12 +32,13 @@ class Journal
   end
 
   def delete(uuid)
-    entry_set = entries.reject {|entry| entry[uuid] == uuid}
+    entry_set = entries.reject {|entry| entry["uuid"] == uuid}
+    File.delete(@file_path)
     write(entry_set)
   end
 
   def write(entries)
-    file = File.new(@file_path, "w")
+    file = File.new(@file_path, "a")
     entries.each {|entry| file.puts(entry.to_json)}
     file.close
   end

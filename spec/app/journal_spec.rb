@@ -93,23 +93,36 @@ describe Journal do
     end
   end
 
+  describe "#entries" do
+    it "returns the list of entries" do
+      journal = test_journal
+      test_entry = "modulating the bit manipulators"
+
+      journal.add_entry(test_entry)
+      journal.add_entry(test_entry)
+      journal.add_entry(test_entry)
+
+      journal.entries.class.should == Array
+      journal.entries.count.should == 3
+    end
+
+    it "returns an empty array if no entries" do
+      journal = test_journal
+
+      journal.entries.should == []
+    end
+  end
+
   describe "#delete" do
     it "deletes a journal entry" do
       journal = test_journal
       test_entry = "modulating the bit manipulators"
-
-      binding.pry
       journal.add_entry(test_entry)
-      journal.add_entry(test_entry)
-      journal.add_entry(test_entry)
-      last_entry = journal.last
-      uuid = last_entry["uuid"]
+      uuid = journal.last["uuid"]
 
       journal.delete(uuid)
 
       journal[uuid].should == nil
-      journal.entries
-      binding.pry
     end
   end
 end
