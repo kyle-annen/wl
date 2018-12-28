@@ -43,21 +43,29 @@ describe Journal do
 
       journal.add_entry(test_entry)
 
-      journal.last_entry.should include(test_entry)
-    end
-
-    it "adds a timestamp to the start to each entry" do
+      entry = journal.last
+      entry["description"].should == test_entry
+      entry["time"].class.should == String
     end
   end
 
   describe "#format_entry" do
-    it "add a timestamp to the front of each entry" do
+    it "formats the entry as a hash" do
       journal = test_journal
       test_entry = "we are testing here"
 
       journal.add_entry(test_entry)
 
-      binding.pry
+      journal.last.class.should == Hash
+    end
+
+    it "adds a uuid for each entry" do
+      journal = test_journal
+      test_entry = "is this thing on?"
+
+      journal.add_entry(test_entry)
+
+      journal.last.keys.should include("uuid")
     end
   end
 
@@ -68,7 +76,40 @@ describe Journal do
 
       journal.add_entry(test_entry)
 
-      journal.last_entry.should include(test_entry)
+      journal.last["description"].should == test_entry
+    end
+  end
+
+  describe "#[]" do
+    it "returns a journal entry by uuid" do
+      journal = test_journal
+      test_entry = "modulating the bit manipulators"
+
+      journal.add_entry(test_entry)
+      last_entry = journal.last
+      uuid = last_entry["uuid"]
+
+      last_entry.should == journal[uuid]
+    end
+  end
+
+  describe "#delete" do
+    it "deletes a journal entry" do
+      journal = test_journal
+      test_entry = "modulating the bit manipulators"
+
+      binding.pry
+      journal.add_entry(test_entry)
+      journal.add_entry(test_entry)
+      journal.add_entry(test_entry)
+      last_entry = journal.last
+      uuid = last_entry["uuid"]
+
+      journal.delete(uuid)
+
+      journal[uuid].should == nil
+      journal.entries
+      binding.pry
     end
   end
 end
