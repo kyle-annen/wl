@@ -1,3 +1,6 @@
+# Set rack env
+ENV["RACK_ENV"] = "development".freeze
+
 
 require 'pry'
 require_relative '../app'
