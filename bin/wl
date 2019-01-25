@@ -1,22 +1,3 @@
 #!/usr/bin/env ruby
 
-require_relative "../app/journal.rb"
-
-@is_test = ARGV.include?("-t")
-@report = ARGV.include?("-r")
-@description = ""
-
-return puts Journal.new.report if @report
-
-if @is_test
-  @description = ARGV[1..(ARGV.length - 1)].join(" ")
-else
-  @description = ARGV.join(" ")
-end
-
-journal = Journal.new(file = "test") if @is_test
-journal = Journal.new unless @is_test
-journal.add_entry(@description)
-
-puts journal.report
 

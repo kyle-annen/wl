@@ -1,5 +1,5 @@
-require_relative "./spec_helper.rb"
-require_relative "../app/journal.rb"
+require_relative "../spec_helper.rb"
+require_relative "../../app/journal.rb"
 
 describe "wl" do
 

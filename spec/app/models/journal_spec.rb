@@ -1,0 +1,2 @@
+describe Journal do
+end
