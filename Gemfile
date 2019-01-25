@@ -5,6 +5,7 @@ gem 'awesome_print'
 gem 'httparty'
 gem 'logger'
 gem 'sqlite3'
+gem 'standalone_migrations'
 
 group :development do
   gem 'byebug'

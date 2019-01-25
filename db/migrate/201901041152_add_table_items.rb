@@ -1,6 +1,6 @@
 class AddTableItems < ActiveRecord::Migration[5.2]
   def change
-    create_table :items, primary_key: :uuid do |t|
+    create_table :items, primary_key: :uuid, id: false do |t|
       t.string :uuid, index: true, default: SecureRandom.uuid
       t.text :subscription
 
